@@ -1,5 +1,5 @@
 module.exports = class Request {
-    constructor() {
+    constructor(idform,) {
         
     }
 }
