@@ -15,8 +15,8 @@ const db = mysql.createConnection({
     database: process.env.DATABASE
 });
 
-const publicDirectory = path.join(__dirname , './public'); // gives us access to current directory
-app.use(express.static(publicDirectory)); // allow the server to use the public direcory which is the css files we have
+//const publicDirectory = path.join(__dirname , './public'); // gives us access to current directory
+//app.use(express.static(publicDirectory)); // allow the server to use the public direcory which is the css files we have
 
 
 app.use(express.urlencoded({ extended: false})); // ensures we can grab the data send from any HTML form
@@ -36,8 +36,9 @@ db.connect((error) =>{
 
 // define our route to get access to our pages
 app.use('/', require('./routes/pages'));
-// define an auth path for the submitted posts
-app.use('/auth' , require('./routes/auth'));
+// define a user path for the different users
+app.use('/user' , require('./routes/userRoutes'));
+
 
 app.listen(4000, ()=>{
     console.log("Server has started on port 4000");

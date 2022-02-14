@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const wareHouseController = require('../controllers/warehouse')
+const purchaseController = require('../controllers/purchase')
+const multer = require('multer')
+const upload = multer({dest: "../uploads"})
 
 router.get("/" , (req,res)=>{
     //res.render("index");
@@ -10,6 +13,8 @@ router.get("/" , (req,res)=>{
 router.get("/postRequest" , (req, res) => {
     //TO DO
 })
+
+router.post('/submitRequest', upload.fields([{name : 'purchaseInterest' },{name :'letterTechCommittee'} , {name : 'letterAward' }, {name : 'approvedPaper'}, {name : 'uniAgreement'}]),purchaseController.submitRequest)
 
 
 
